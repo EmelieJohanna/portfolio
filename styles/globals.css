@@ -3,31 +3,86 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --text-color: #1f2937;
+  --background-color: #f8fafc;
+  --accent-color: #00383b;
+  --secondary-color: #e0e7ff;
+  --highlight-color: #ec4899;
+  --border-style: 2px dashed #e5e7eb;
+  --shadow-color: #b1bbce;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+/* [data-theme="dark"] */
+
+.dark {
+  --text-color: #e4e4e4;
+  --text-color2: #bdbdbd;
+  --background-color: #061328;
+  /* buttons */
+  --accent-color: #009e91;
+  /* secondary buttons, hover */
+  --secondary-color: #00f9ec;
+  /* key info, interactive elements */
+  --highlight-color: #f472b6;
+  --border-style: 2px dashed #4b5563;
+  --shadow-color: #08afa1;
+}
+
+.pink {
+  --text-color: #1f2937;
+  --text-color2: #bdbdbd;
+  --background-color: #f7d0f3;
+  --accent-color: #c737a5;
+  --secondary-color: #db65a6;
+  --highlight-color: #c53c80;
+  --border-style: 2px dashed #e5e7eb;
+  --shadow-color: #fef3c7;
+}
+
+.hover:hover {
+  text-decoration: underline;
+}
+/* Cube */
+.cube {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotate 10s infinite linear;
+}
+
+.face {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: rgba(213, 76, 176, 0.8);
+  border: 3px solid #ccc;
+}
+
+.front {
+  transform: rotateY(0deg) translateZ(50px);
+}
+.back {
+  transform: rotateY(180deg) translateZ(50px);
+}
+.right {
+  transform: rotateY(90deg) translateZ(50px);
+}
+.left {
+  transform: rotateY(-90deg) translateZ(50px);
+}
+.top {
+  transform: rotateX(90deg) translateZ(50px);
+}
+.bottom {
+  transform: rotateX(-90deg) translateZ(50px);
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateX(0deg) rotateY(0deg);
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  to {
+    transform: rotateX(360deg) rotateY(360deg);
   }
 }
